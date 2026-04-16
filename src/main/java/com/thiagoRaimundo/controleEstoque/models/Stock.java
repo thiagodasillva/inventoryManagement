@@ -14,6 +14,11 @@ public class Stock {
     private int quantidadeAtual;
     private int quantidadeMinima;
 
+
+
+
+
+
     public Stock() {
     }
 

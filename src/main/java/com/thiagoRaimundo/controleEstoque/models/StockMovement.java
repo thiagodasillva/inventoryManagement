@@ -5,11 +5,17 @@ import java.time.format.DateTimeFormatter;
 public class StockMovement {
 
     private Long id;
-    private Product produto;
     private Enum tipo;
     private int quantidade;
     private DateTimeFormatter dataHora;
     private User user;
+    private Lote lote;
+    private Product product;
+    private Stock stock;
+
+
+
+
 
 
     public StockMovement() {
@@ -23,12 +29,12 @@ public class StockMovement {
         this.id = id;
     }
 
-    public Product getProduto() {
-        return produto;
+    public Lote getLote() {
+        return lote;
     }
 
-    public void setProduto(Product produto) {
-        this.produto = produto;
+    public void setLote(Lote lote) {
+        this.lote = lote;
     }
 
     public Enum getTipo() {
@@ -61,5 +67,21 @@ public class StockMovement {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Stock getStock() {
+        return stock;
+    }
+
+    public void setStock(Stock stock) {
+        this.stock = stock;
     }
 }

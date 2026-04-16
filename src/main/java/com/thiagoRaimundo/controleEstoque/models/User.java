@@ -10,6 +10,7 @@ public class User {
     private String email;
     private String password;
     private Enum perfil;
+    private Boolean status = true;
 
 
     public User() {
@@ -53,5 +54,13 @@ public class User {
 
     public void setPerfil(Enum perfil) {
         this.perfil = perfil;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }

@@ -3,6 +3,7 @@ package com.thiagoRaimundo.controleEstoque.models;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tb_lote")
@@ -14,6 +15,7 @@ public class Lote {
     private int quant;
     private Date date;
     private Date validate;
+    private Boolean status = true;
 
     public Lote() {
     }
@@ -56,5 +58,36 @@ public class Lote {
 
     public void setQuant(int quant) {
         this.quant = quant;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Lote lote = (Lote) o;
+        return Objects.equals(id, lote.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Lote{" +
+                "produto=" + produto +
+                ", quant=" + quant +
+                ", date=" + date +
+                ", validate=" + validate +
+                '}';
     }
 }

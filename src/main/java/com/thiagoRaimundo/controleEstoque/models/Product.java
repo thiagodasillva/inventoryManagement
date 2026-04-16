@@ -2,6 +2,7 @@ package com.thiagoRaimundo.controleEstoque.models;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 
@@ -28,6 +29,10 @@ public class Product {
     private Double custo;
 
     private Category category;
+
+    private Collection<Lote> lote;
+
+    private Boolean status = true;
 
 
     public Product() {
@@ -91,6 +96,26 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Collection<Lote> getLote() {
+        return lote;
+    }
+
+    public void sobescreverLote(Collection<Lote> lote) {
+        this.lote = lote;
+    }
+
+    public void setLote(Lote lote) {
+        this.lote.add(lote);
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     @Override
