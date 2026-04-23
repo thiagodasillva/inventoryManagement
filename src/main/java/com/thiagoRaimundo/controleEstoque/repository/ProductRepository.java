@@ -1,7 +1,14 @@
 package com.thiagoRaimundo.controleEstoque.repository;
 
+import com.thiagoRaimundo.controleEstoque.models.Category;
 import com.thiagoRaimundo.controleEstoque.models.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import javax.swing.text.html.Option;
+import java.util.List;
+import java.util.Optional;
+
 public interface ProductRepository extends JpaRepository<Product,Long> {
+    List<Product> findByCategory(Long id);
+    Optional<Product> findByName(String name);
 }

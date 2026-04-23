@@ -1,35 +1,27 @@
-package com.thiagoRaimundo.controleEstoque.models;
+package com.thiagoRaimundo.controleEstoque.models.DTOs;
 
 import com.thiagoRaimundo.controleEstoque.models.Enum.TipoStockMoviment;
-import jakarta.persistence.*;
+import com.thiagoRaimundo.controleEstoque.models.Lote;
+import com.thiagoRaimundo.controleEstoque.models.Product;
+import com.thiagoRaimundo.controleEstoque.models.User;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.ManyToOne;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
-@Entity
-@Table(name = "tb_stockMoviment")
-public class StockMovement {
+public class StockMovementDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Enumerated(EnumType.STRING)
     private TipoStockMoviment tipo;
     private Integer quantidade; // quantidade de produtos na operação
     private String observacao;
     private LocalDateTime dataHora;
-    @ManyToOne
     private User user;
-    @ManyToOne
     private Lote lote;
-    @ManyToOne
     private Product product;
 
-    public StockMovement() {
-    }
-
-    public Long getId() {
-        return id;
+    public StockMovementDTO() {
     }
 
     public TipoStockMoviment getTipo() {
@@ -87,30 +79,6 @@ public class StockMovement {
     public void setProduct(Product product) {
         this.product = product;
     }
-
-    @Override
-    public String toString() {
-        return "StockMovement{" +
-                "tipo=" + tipo +
-                ", quantidade=" + quantidade +
-                ", observacao='" + observacao + '\'' +
-                ", dataHora=" + dataHora +
-                ", user=" + user +
-                ", lote=" + lote +
-                ", product=" + product +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        StockMovement that = (StockMovement) o;
-        return Objects.equals(id, that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
+
+

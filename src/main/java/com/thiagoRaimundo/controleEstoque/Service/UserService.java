@@ -8,11 +8,11 @@ import java.util.Collection;
 import java.util.Optional;
 
 @Service
-public class userService {
+public class UserService {
 
     private UserRepository userRepository;
 
-    public userService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -52,7 +52,7 @@ public class userService {
             User user = userOptional.get();
             user.setName(u.getName());
             user.setEmail(u.getEmail());
-            user.setPerfil(user.getPerfil());
+            user.setTipoUser(user.getTipoUser());
 
             return user;
         }

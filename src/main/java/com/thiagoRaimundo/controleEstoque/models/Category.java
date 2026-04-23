@@ -2,6 +2,8 @@ package com.thiagoRaimundo.controleEstoque.models;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+
 @Entity
 @Table(name = "tb_category")
 public class Category {
@@ -11,5 +13,38 @@ public class Category {
     private Long id;
     private String name;
     private String description;
+    @ManyToOne()
+    private Collection<Product> product;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Collection<Product> getProduct() {
+        return product;
+    }
+
+    public void setProduct(Collection<Product> product) {
+        this.product = product;
+    }
 }

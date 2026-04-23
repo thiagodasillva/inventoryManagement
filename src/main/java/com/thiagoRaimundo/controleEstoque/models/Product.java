@@ -15,22 +15,14 @@ public class Product {
     private Long id;
     @Column(name = "name")
     private String name;
-    @Column(name = "quant")
-    private int quant;
-    @Column(name = "vencimento")
-    private Date dateVencimento;
-
     @Column(name = "predictDescription")
     private String Description;
-    @Column(name = "Saleprice")
-    private Double precoDenda;
 
-    @Column(name = "custo")
-    private Double custo;
-
+    @OneToOne
     private Category category;
 
-    private Collection<Lote> lote;
+    @OneToMany(mappedBy = "product")
+    private Collection<Lote> lotes;
 
     private Boolean status = true;
 
@@ -42,28 +34,13 @@ public class Product {
         return id;
     }
 
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getQuant() {
-        return quant;
-    }
-
-    public void setQuant(int quant) {
-        this.quant = quant;
-    }
-
-    public Date getDateVencimento() {
-        return dateVencimento;
-    }
-
-    public void setDateVencimento(Date dateVencimento) {
-        this.dateVencimento = dateVencimento;
     }
 
     public String getDescription() {
@@ -74,22 +51,6 @@ public class Product {
         Description = description;
     }
 
-    public Double getPrecoDenda() {
-        return precoDenda;
-    }
-
-    public void setPrecoDenda(Double precoDenda) {
-        this.precoDenda = precoDenda;
-    }
-
-    public Double getCusto() {
-        return custo;
-    }
-
-    public void setCusto(Double custo) {
-        this.custo = custo;
-    }
-
     public Category getCategory() {
         return category;
     }
@@ -98,16 +59,12 @@ public class Product {
         this.category = category;
     }
 
-    public Collection<Lote> getLote() {
-        return lote;
+    public Collection<Lote> getLotes() {
+        return lotes;
     }
 
-    public void sobescreverLote(Collection<Lote> lote) {
-        this.lote = lote;
-    }
-
-    public void setLote(Lote lote) {
-        this.lote.add(lote);
+    public void setLotes(Collection<Lote> lotes) {
+        this.lotes = lotes;
     }
 
     public Boolean getStatus() {

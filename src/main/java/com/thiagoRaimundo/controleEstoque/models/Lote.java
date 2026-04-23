@@ -2,6 +2,7 @@ package com.thiagoRaimundo.controleEstoque.models;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -11,10 +12,10 @@ public class Lote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Product produto;
-    private int quant;
-    private Date date;
-    private Date validate;
+    @ManyToOne
+    private Product product;
+    private Integer quantAtual;
+    private LocalDate validate;
     private Boolean status = true;
 
     public Lote() {
@@ -24,40 +25,28 @@ public class Lote {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Product getProduct() {
+        return product;
     }
 
-    public Product getProduto() {
-        return produto;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
-    public void setProduto(Product produto) {
-        this.produto = produto;
+    public Integer getQuantAtual() {
+        return quantAtual;
     }
 
-    public Date getDate() {
-        return date;
+    public void setQuantAtual(Integer quantAtual) {
+        this.quantAtual = quantAtual;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Date getValidate() {
+    public LocalDate getValidate() {
         return validate;
     }
 
-    public void setValidate(Date validate) {
+    public void setValidate(LocalDate validate) {
         this.validate = validate;
-    }
-
-    public int getQuant() {
-        return quant;
-    }
-
-    public void setQuant(int quant) {
-        this.quant = quant;
     }
 
     public Boolean getStatus() {
@@ -66,6 +55,16 @@ public class Lote {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Lote{" +
+                "produto=" + product +
+                ", quantAtual=" + quantAtual +
+                ", validate=" + validate +
+                ", status=" + status +
+                '}';
     }
 
     @Override
@@ -79,15 +78,5 @@ public class Lote {
     @Override
     public int hashCode() {
         return Objects.hash(id);
-    }
-
-    @Override
-    public String toString() {
-        return "Lote{" +
-                "produto=" + produto +
-                ", quant=" + quant +
-                ", date=" + date +
-                ", validate=" + validate +
-                '}';
     }
 }

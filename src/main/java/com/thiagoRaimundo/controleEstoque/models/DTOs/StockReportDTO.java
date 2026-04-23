@@ -1,35 +1,13 @@
-package com.thiagoRaimundo.controleEstoque.models;
+package com.thiagoRaimundo.controleEstoque.models.DTOs;
 
-import jakarta.persistence.*;
-import org.springframework.context.annotation.EnableMBeanExport;
+import com.thiagoRaimundo.controleEstoque.models.Product;
 
-import java.util.Collection;
-import java.util.Objects;
+public class StockReportDTO {
 
-@Entity
-@Table(name = "tb_Storck")
-public class Stock {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @OneToOne
-    @JoinColumn(name = "id",unique = true)
     private Product product;
     private Integer quantidadeAtual;
     private Integer quantidadeMinima;
     private Integer quantidadeMaxima;
-    @Version
-    private Long version;
-
-
-    public Stock() {
-    }
-
-    public Long getId() {
-        return id;
-    }
 
     public Product getProduct() {
         return product;
@@ -61,18 +39,5 @@ public class Stock {
 
     public void setQuantidadeMaxima(Integer quantidadeMaxima) {
         this.quantidadeMaxima = quantidadeMaxima;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Stock stock = (Stock) o;
-        return Objects.equals(id, stock.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
     }
 }
